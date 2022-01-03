@@ -1,4 +1,4 @@
-package com.example.cart.democart;
+package com.example.cart.democart.rabbitmq;
 
 
 import org.springframework.amqp.core.*;

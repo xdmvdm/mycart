@@ -1,4 +1,6 @@
-package com.example.cart.democart;
+package com.example.cart.democart.services;
+
+import com.example.cart.democart.entity.Cart;
 
 import java.util.List;
 

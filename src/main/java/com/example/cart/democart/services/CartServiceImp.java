@@ -1,4 +1,5 @@
-package com.example.cart.democart;
+package com.example.cart.democart.services;
+import com.example.cart.democart.entity.Cart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.query.Criteria;

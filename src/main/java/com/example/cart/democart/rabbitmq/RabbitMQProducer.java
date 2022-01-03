@@ -1,5 +1,6 @@
-package com.example.cart.democart;
+package com.example.cart.democart.rabbitmq;
 
+import com.example.cart.democart.entity.Cart;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

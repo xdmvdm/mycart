@@ -1,4 +1,4 @@
-package com.example.cart.democart;
+package com.example.cart.democart.entity;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 

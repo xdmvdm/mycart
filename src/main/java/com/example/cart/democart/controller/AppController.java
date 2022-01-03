@@ -1,12 +1,13 @@
-package com.example.cart.democart;
+package com.example.cart.democart.controller;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import com.example.cart.democart.services.CartService;
+import com.example.cart.democart.rabbitmq.RabbitMQProducer;
+import com.example.cart.democart.entity.Cart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -33,11 +34,11 @@ public class AppController {
     public String addMessageQue() {
         LOG.info("Saving Que.");
 
-        Cart mycard = new Cart(100L, 1L, 1, 10, 1, "testdata"+UUID.randomUUID());
+        Cart mycard = new Cart(100L, 1L, 1, 10, 1, "testdata" + UUID.randomUUID());
         rabbitMQProducer.send(mycard);
         cartService.addCartItem(mycard);
 
-         System.out.println("Cart Item Added & Message is sent to que");
+        System.out.println("Cart Item Added & Message is sent to que");
         return "Items are saved";
     }
 
@@ -50,8 +51,6 @@ public class AppController {
 
         return cartService.getAllCartItems();
     }
-
-
 
 
     @GetMapping("/addCartItem")
@@ -73,7 +72,7 @@ public class AppController {
         card.setPrice(Double.parseDouble(price));
         card.setCustomerId(Integer.parseInt(customerId));
         card.setProductName(productName);
- System.out.println("Cart Item Saved!");
+        System.out.println("Cart Item Saved!");
         rabbitMQProducer.send(card);
         cartService.addCartItem(card);
         System.out.println("Cart Item Added & Message is sent to que");
